@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>AI Chat Saver</h1>
+      <span id="platform-badge" class="badge">—</span>
+    </header>
+
+    <section id="recording-section" class="card">
+      <div class="row">
+        <div>
+          <div class="label">Recording</div>
+          <div id="rec-status" class="status off">Not recording</div>
+        </div>
+        <button id="toggle-rec" class="btn primary">Start recording</button>
+      </div>
+      <p class="hint">
+        While recording is on, every message on this tab's chat is captured. Turn it off to stop.
+      </p>
+    </section>
+
+    <section class="card">
+      <div class="label">Quick actions</div>
+      <div class="btn-grid">
+        <button id="snapshot-temp" class="btn">Snapshot (temp)</button>
+        <button id="save-permanent" class="btn">Save (permanent)</button>
+        <button id="copy-chat" class="btn">Copy chat + prompt</button>
+      </div>
+      <p class="hint">
+        <b>Snapshot</b> stores the current chat in a temporary slot (overwritten by the next snapshot).
+        <b>Save</b> stores it permanently. <b>Copy</b> puts a formatted transcript + continuation
+        instruction on your clipboard, ready to paste into any new chat.
+      </p>
+    </section>
+
+    <section class="card">
+      <div class="row">
+        <div class="label">Saved chats</div>
+        <select id="filter">
+          <option value="all">All</option>
+          <option value="temp">Temporary</option>
+          <option value="permanent">Permanent</option>
+        </select>
+      </div>
+      <ul id="chat-list" class="list"></ul>
+    </section>
+
+    <div id="toast" class="toast hidden"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
